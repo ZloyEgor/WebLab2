@@ -14,12 +14,11 @@ import java.io.PrintWriter;
 public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        PrintWriter writer = resp.getWriter();
+        PrintWriter writer = resp.getWriter();
 
         String x = req.getParameter("x_value");
         String y = req.getParameter("y_value");
         String r = req.getParameter("r_value");
-
         if (x != null && y != null && r != null) {
             String path = "/calculate";
             ServletContext servletContext = getServletContext();
@@ -29,8 +28,7 @@ public class ControllerServlet extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
 
-
-//        writer.close();
+        writer.close();
 
     }
 }

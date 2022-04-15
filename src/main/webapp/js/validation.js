@@ -62,17 +62,11 @@ $('.form').on("submit", function (event) {
     if (validate()) {
         event.preventDefault();
         let data = getData();
-        console.log(data);
         $.ajax( {
-            //TODO: send to servet
-            //url: 'php/server.php',
+            url: 'send',
             type: 'GET',
             data: data,
             success: function (data) {
-                if(data === "Data is incorrect!")
-                    alert("Data is incorrect!");
-                else
-                    $("#results tr:last").after(data);
                 console.log(data);
             },
             error: function (jqXhr, textStatus, errorMessage) { // error callback

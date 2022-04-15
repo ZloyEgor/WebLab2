@@ -1,3 +1,4 @@
+<jsp:useBean id="dots" scope="session" class="java.util.ArrayList"/>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ru">
@@ -89,6 +90,16 @@
         </tr>
         </thead>
         <tbody>
+        <c:forEach var="dot" items="${dots}">
+            <tr>
+                <td>${dot.getX()}</td>
+                <td>${dot.getY()}</td>
+                <td>${dot.getR()}</td>
+                <td>${dot.getExecutionTime()}</td>
+                <td>${dot.getLocalTime}</td>
+                <td>${dot.isResult()? "Попадание" : "Промах"}</td>
+            </tr>
+        </c:forEach>
 
         </tbody>
     </table>

@@ -47,7 +47,7 @@ function checkY() {
 
 
 function getData() {
-    let x = $("input[name='x_value']:selected").val();
+    let x = parseInt($("input[name='x_value']:checked:first").val());
     let y = parseFloat($('#y').val().replace(",", "."));
     let r = parseFloat($('#r').val());
 
@@ -63,21 +63,22 @@ $('.form').on("submit", function (event) {
         event.preventDefault();
         let data = getData();
         console.log(data);
-        // $.ajax( {
-        //     url: 'php/server.php',
-        //     type: 'GET',
-        //     data: data,
-        //     success: function (data) {
-        //         if(data === "Data is incorrect!")
-        //             alert("Data is incorrect!");
-        //         else
-        //             $("#results tr:last").after(data);
-        //         console.log(data);
-        //     },
-        //     error: function (jqXhr, textStatus, errorMessage) { // error callback
-        //         console.log(errorMessage);
-        //         alert("There's an error on server");
-        //     }
-        // });
+        $.ajax( {
+            //TODO: send to servet
+            //url: 'php/server.php',
+            type: 'GET',
+            data: data,
+            success: function (data) {
+                if(data === "Data is incorrect!")
+                    alert("Data is incorrect!");
+                else
+                    $("#results tr:last").after(data);
+                console.log(data);
+            },
+            error: function (jqXhr, textStatus, errorMessage) { // error callback
+                console.log(errorMessage);
+                alert("There's an error on server");
+            }
+        });
     }
 });

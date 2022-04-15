@@ -117,19 +117,19 @@
                 <polygon fill="fuchsia"
                          fill-opacity="0.48"
                          stroke="fuchsia"
-                         points="50,150 150,150 150,250 50,250"></polygon>
+                         points="200,150 150,150 150,250 200,250"></polygon>
 
                 <!-- Треугольник -->
                 <polygon fill="fuchsia"
                          fill-opacity="0.48"
                          stroke="fuchsia"
-                         points="150,150 250,150 150,250"></polygon>
+                         points="150,150 100,150 150,250"></polygon>
 
                 <!-- Четверть круга -->
                 <path fill="fuchsia"
                       fill-opacity="0.48"
                       stroke="fuchsia"
-                      d="M250,150 Q250,50 150,50 L 150 150 Z"></path>
+                      d="M100,150 Q100,100 150,100 L 150 150 Z"></path>
 
                 <!-- Точка на графике -->
                 <circle r="4" cx="150" cy="150" fill="red" stroke="white" visibility="hidden"></circle>

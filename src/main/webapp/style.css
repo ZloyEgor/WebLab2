@@ -37,7 +37,7 @@ form {
 }
 
 .selectors {
-    width: 40%;
+    width: 60%;
 }
 .selectors > * {
     border: 1px solid black;
@@ -62,7 +62,13 @@ form {
     justify-content: space-between;
 
 }
-
+.svg-container {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
 .selector-description {
     padding-right: 20%;
     align-self: center;

@@ -76,7 +76,65 @@
             </div>
             <button class="submit-button" type="submit">Проверить</button>
         </div>
-        <canvas class="task-image" width="500" height="500" id="canvas"></canvas>
+        <div class="svg-container">
+            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Стрелки и оси -->
+                <line stroke="black" x1="0" x2="300" y1="150" y2="150"></line>
+                <line stroke="black" x1="150" x2="150" y1="0" y2="300"></line>
+                <polygon fill="black" points="150,0 145,20 155,20" stroke="black"></polygon>
+                <polygon fill="black" points="300,150 280,155 280,145" stroke="black"></polygon>
+
+                <!-- Деления -->
+                <line stroke="black" x1="200" x2="200" y1="155" y2="145"></line>
+                <line stroke="black" x1="250" x2="250" y1="155" y2="145"></line>
+
+                <line stroke="black" x1="50" x2="50" y1="155" y2="145"></line>
+                <line stroke="black" x1="100" x2="100" y1="155" y2="145"></line>
+
+                <line stroke="black" x1="145" x2="155" y1="100" y2="100"></line>
+                <line stroke="black" x1="145" x2="155" y1="50" y2="50"></line>
+
+                <line stroke="black" x1="145" x2="155" y1="200" y2="200"></line>
+                <line stroke="black" x1="145" x2="155" y1="250" y2="250"></line>
+
+                <!-- Подписи к делениям и осям -->
+                <text fill="black" x="195" y="140">R/2</text>
+                <text fill="black" x="250" y="140">R</text>
+
+                <text fill="black" x="40" y="140">-R</text>
+                <text fill="black" x="85" y="140">-R/2</text>
+
+                <text fill="black" x="160" y="55">R</text>
+                <text fill="black" x="160" y="105">R/2</text>
+
+                <text fill="black" x="160" y="204">-R/2</text>
+                <text fill="black" x="160" y="255">-R</text>
+
+                <text fill="black" x="285" y="140">x</text>
+                <text fill="black" x="160" y="15">y</text>
+
+                <!-- Прямоугольник -->
+                <polygon fill="fuchsia"
+                         fill-opacity="0.48"
+                         stroke="fuchsia"
+                         points="50,150 150,150 150,250 50,250"></polygon>
+
+                <!-- Треугольник -->
+                <polygon fill="fuchsia"
+                         fill-opacity="0.48"
+                         stroke="fuchsia"
+                         points="150,150 250,150 150,250"></polygon>
+
+                <!-- Четверть круга -->
+                <path fill="fuchsia"
+                      fill-opacity="0.48"
+                      stroke="fuchsia"
+                      d="M250,150 Q250,50 150,50 L 150 150 Z"></path>
+
+                <!-- Точка на графике -->
+                <circle r="4" cx="150" cy="150" fill="red" stroke="white" visibility="hidden"></circle>
+            </svg>
+        </div>
     </form>
     <table class="results" id="results">
         <thead>
@@ -95,16 +153,16 @@
                 <td>${dot.getX()}</td>
                 <td>${dot.getY()}</td>
                 <td>${dot.getR()}</td>
-                <td>${dot.getExecutionTime()}</td>
+                <td>${dot.isResult()}</td>
                 <td>${dot.getLocalTime}</td>
-                <td>${dot.isResult()? "Попадание" : "Промах"}</td>
+                <td>${dot.getExecutionTime()}</td>
             </tr>
         </c:forEach>
 
         </tbody>
     </table>
+
 </article>
 <script src="js/validation.js"></script>
-<script></script>
 </body>
 </html>

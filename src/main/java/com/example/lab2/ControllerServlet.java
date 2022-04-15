@@ -13,19 +13,20 @@ import java.io.PrintWriter;
 @WebServlet("/send")
 public class ControllerServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter writer = resp.getWriter();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PrintWriter writer = response.getWriter();
 
-        String x = req.getParameter("x_value");
-        String y = req.getParameter("y_value");
-        String r = req.getParameter("r_value");
+        String x = request.getParameter("x_value");
+        String y = request.getParameter("y_value");
+        String r = request.getParameter("r_value");
         if (x != null && y != null && r != null) {
             String path = "/calculate";
             ServletContext servletContext = getServletContext();
             RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
-            requestDispatcher.forward(req, resp);
+            requestDispatcher.forward(request, response);
         } else {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            ServletContext context = getServletContext();
+            context.getRequestDispatcher("/index.jsp").forward(request, response);
         }
 
         writer.close();

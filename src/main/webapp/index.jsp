@@ -1,28 +1,29 @@
-<jsp:useBean id="dots" scope="session" class="java.util.ArrayList"/>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="dots" scope="session" class="java.util.ArrayList"/>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Lab № 2</title>
+    <title>Lab 2</title>
     <link rel="stylesheet" href="style.css">
     <script src="js/jquery-3.6.0.js"></script>
 </head>
 <body>
 <header>
     <div class="header_content">
-        <div>Стуков Егор Александрович<br>
-            Антонов Всеволод Владимирович
+        <div>Stukov Egor Alexandrovich<br>
+            Antonov Vsevolod Vladimirovich
         </div>
         <div>P3232<br>P3233</div>
         <div>34601</div>
     </div>
 </header>
 <article>
-    <form class="form" name="form" method="get">
+    <form class="form" name="form" method="get" onsubmit="return validate();" action="send">
         <div class="selectors">
             <div class="x-selector">
-                <label class="selector-description">Введите значение X:</label>
+                <label class="selector-description">Choose X value:</label>
                 <div class="checkbox-with-label">
                     <input type="checkbox" id="-3_x" name="x_value" value="-3">
                     <label for="-3_x">-3</label>
@@ -61,11 +62,11 @@
                 </div>
             </div>
             <div class="y-selector">
-                <div class="selector-description">Выберите значение Y:</div>
+                <div class="selector-description">Choose Y value:</div>
                 <input type="text" id="y" name="y_value">
             </div>
             <div class="r-selector">
-                <div class="selector-description">Выберите значение параметра R:</div>
+                <div class="selector-description">Choose R value:</div>
                 <select name="r_value" id="r">
                     <option value="1">1</option>
                     <option value="1.5">1.5</option>
@@ -74,7 +75,7 @@
                     <option value="3">3</option>
                 </select>
             </div>
-            <button class="submit-button" type="submit">Проверить</button>
+            <button class="submit-button" type="submit">Check</button>
         </div>
         <div class="svg-container">
             <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg">
@@ -142,20 +143,20 @@
             <th>X</th>
             <th>Y</th>
             <th>R</th>
-            <th>Попадание</th>
-            <th>Время обращения</th>
-            <th>Время работы скрипта</th>
+            <th>Hit</th>
+            <th>Turnaround time</th>
+            <th>Script execution time</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach var="dot" items="${dots}">
             <tr>
-                <td>${dot.getX()}</td>
-                <td>${dot.getY()}</td>
-                <td>${dot.getR()}</td>
-                <td>${dot.isResult()}</td>
-                <td>${dot.getLocalTime}</td>
-                <td>${dot.getExecutionTime()}</td>
+                <td>${dot.x}</td>
+                <td>${dot.y}</td>
+                <td>${dot.r}</td>
+                <td>${dot.result}</td>
+                <td>${dot.localTime}</td>
+                <td>${dot.executionTime}</td>
             </tr>
         </c:forEach>
 

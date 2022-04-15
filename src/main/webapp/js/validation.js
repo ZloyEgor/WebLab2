@@ -36,7 +36,7 @@ function checkY() {
     if (isNaN(yValue)) {
         alert("Invalid Y value");
         return false;
-    } else if (yValue < minValue || yValue > maxValue) {
+    } else if (yValue <= minValue || yValue >= maxValue) {
         alert("Invalid Y value:\n" +
             `Minimal value: ${minValue} \n` +
             `Maximal value: ${maxValue}`);
@@ -58,21 +58,21 @@ function getData() {
     };
 }
 
-$('.form').on("submit", function (event) {
-    if (validate()) {
-        event.preventDefault();
-        let data = getData();
-        $.ajax( {
-            url: 'send',
-            type: 'GET',
-            data: data,
-            success: function (data) {
-                console.log(data);
-            },
-            error: function (jqXhr, textStatus, errorMessage) { // error callback
-                console.log(errorMessage);
-                alert("There's an error on server");
-            }
-        });
-    }
-});
+// $('.form').on("submit", function (event) {
+//     if (validate()) {
+//         event.preventDefault();
+//         let data = getData();
+//         $.ajax( {
+//             url: 'send',
+//             type: 'GET',
+//             data: data,
+//             success: function (data) {
+//
+//             },
+//             error: function (jqXhr, textStatus, errorMessage) { // error callback
+//                 console.log(errorMessage);
+//                 alert("There's an error on server");
+//             }
+//         });
+//     }
+// });

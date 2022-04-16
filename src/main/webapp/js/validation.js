@@ -38,8 +38,7 @@ function checkY() {
         return false;
     } else if (yValue <= minValue || yValue >= maxValue) {
         alert("Invalid Y value:\n" +
-            `Minimal value: ${minValue} \n` +
-            `Maximal value: ${maxValue}`);
+            `Should be in  (${minValue}; ${maxValue}`);
         return false;
     }
     return true;

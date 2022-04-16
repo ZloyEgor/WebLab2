@@ -133,7 +133,14 @@
                       d="M100,150 Q100,100 150,100 L 150 150 Z"></path>
 
                 <!-- Точка на графике -->
-                <circle r="4" cx="150" cy="150" fill="red" stroke="white" visibility="hidden"></circle>
+                <c:forEach var="dot" items="${dots}">
+                    <circle r="3.5"
+                            cx=${((300 / 2 + (dot.x) / dot.r * 100))}
+                                    cy=${((300 / 2 + (dot.y) / dot.r * -100))}
+                            id="target-dot"
+                            fill=${dot.result ? "green" : "red"}>
+                    </circle>
+                </c:forEach>
             </svg>
         </div>
     </form>

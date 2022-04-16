@@ -2,18 +2,21 @@ const SVG_SIZE = 300
 
 // Функции для расчёта координат точки
 function calculateX(x, r) {
-    return (x - SVG_SIZE / 2) * r / 100;
+    // return Math.floor(SVG_SIZE / 2 + x / r * 100);
+    return SVG_SIZE / 2 + x / r * 100;
 }
 
 function calculateY(y, r) {
-    return (SVG_SIZE / 2 - y) * r / 100;
+    return SVG_SIZE / 2 + y / r * -100;
+    // return Math.floor(SVG_SIZE / 2 + y / r * -100);
 }
 
 function doRequest(x, y, r) {
     let request = ("send?x_value=" + x + "&y_value=" + y + "&r_value=" + r);
     fetch(request)
         .then(response => response.text())
-        .then(response => addToTable(response));
+        .then(response => addToTable(response))
+        .then(response => drawDot(response));
 }
 
 $('svg').on("click", function (e) {
@@ -27,9 +30,9 @@ $('svg').on("click", function (e) {
 });
 
 function addToTable(response) {
-    console.log(response)
+    // console.log(response)
     response = JSON.parse(response);
-    console.log(response);
+    // console.log(response);
     $('tbody')
         .append($('<tr>')
             .append($('<td>')
@@ -48,4 +51,24 @@ function addToTable(response) {
             ).append($('<td>')
                 .text(response['executionTime'])
             ));
+    return response;
+}
+
+function drawDot(response) {
+    // console.log(response);
+    // response = JSON.parse(response);
+    console.log(response);
+
+    let xCoordinate = calculateX(response['x'], response['r']);
+    let yCoordinate = calculateY(response['y'], response['r']);
+    let color = response['result'] ? "green" : "red";
+    console.log(xCoordinate, yCoordinate, color);
+
+    let svgns = "http://www.w3.org/2000/svg";
+    let circle = document.createElementNS(svgns, "circle");
+    circle.setAttributeNS(null, 'r', '3.5');
+    circle.setAttributeNS(null, 'cx', xCoordinate);
+    circle.setAttributeNS(null, 'cy', yCoordinate);
+    circle.setAttributeNS(null, 'fill', color);
+    document.querySelector("svg").appendChild(circle);
 }

@@ -9,7 +9,7 @@ function checkX() {
         console.log(selected);
         console.log(selected.length);
         return false;
-    } else if(selected.length === 0) {
+    } else if (selected.length === 0) {
         alert('Select X value');
         console.log(selected);
         console.log(selected.length);
@@ -32,13 +32,15 @@ function checkY() {
         alert("Enter Y value");
         return false;
     }
-    yValue = parseFloat(yValue.replace(",", "."));
-    if (isNaN(yValue)) {
+    if (isNaN(yValue) || !isFinite(yValue)) {
         alert("Invalid Y value");
         return false;
-    } else if (yValue <= minValue || yValue >= maxValue) {
+    }
+    yValue = parseFloat(yValue.replace(",", "."));
+
+    if (yValue <= minValue || yValue >= maxValue) {
         alert("Invalid Y value:\n" +
-            `Should be in  (${minValue}; ${maxValue})`);
+            `Should be in (${minValue}; ${maxValue})`);
         return false;
     }
     return true;

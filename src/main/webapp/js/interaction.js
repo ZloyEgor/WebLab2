@@ -1,4 +1,5 @@
 const SVG_SIZE = 300
+
 // Функции для расчёта координат точки
 function calculateX(x, r) {
     return (x - SVG_SIZE / 2) * r / 100;
@@ -29,26 +30,22 @@ function addToTable(response) {
     console.log(response)
     response = JSON.parse(response);
     console.log(response);
-    response.forEach(element => {
-        $('tbody')
-            .append($('<tr>')
-                .append($('<td>')
-                    .text(element['x'])
-                )
-                .append($('<td>')
-                    .text(element['y'])
-                )
-                .append($('<td>')
-                    .text(element['r'])
-                )
-                .append($('<td style=\"background-color: ' +
-                    (element['result'] === "Попадание" ? "green;" : "red;") +
-                    "\">")
-                    .text(element['result'])
-                ).append($('<td>')
-                    .text(element['localTime'])
-                ).append($('<td>')
-                    .text(element['executionTime'])
-                ));
-    });
+    $('tbody')
+        .append($('<tr>')
+            .append($('<td>')
+                .text(Number.isInteger(response['x']) ? parseFloat(response['x']).toFixed(1) : response['x'])
+            )
+            .append($('<td>')
+                .text(Number.isInteger(response['y']) ? parseFloat(response['y']).toFixed(1) : response['y'])
+            )
+            .append($('<td>')
+                .text(Number.isInteger(response['r']) ? parseFloat(response['r']).toFixed(1) : response['r'])
+            )
+            .append($('<td>')
+                .text(response['result'])
+            ).append($('<td>')
+                .text(response['localTime'])
+            ).append($('<td>')
+                .text(response['executionTime'])
+            ));
 }

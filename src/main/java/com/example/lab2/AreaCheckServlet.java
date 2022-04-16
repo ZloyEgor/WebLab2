@@ -46,7 +46,7 @@ public class AreaCheckServlet extends HttpServlet {
             session.setAttribute("dots", dots);
 
             Gson gson = new Gson();
-            String JSONResponse = gson.toJson(dots);
+            String JSONResponse = gson.toJson(dot);
             response.getWriter().print(JSONResponse);
             request.getSession().setAttribute("serverInfo", true);
         }

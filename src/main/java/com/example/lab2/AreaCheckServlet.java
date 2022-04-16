@@ -49,9 +49,11 @@ public class AreaCheckServlet extends HttpServlet {
             String JSONResponse = gson.toJson(dot);
             response.getWriter().print(JSONResponse);
             request.getSession().setAttribute("serverInfo", true);
+        } else {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            ServletContext context = getServletContext();
+            context.getRequestDispatcher("/index.jsp").forward(request, response);
         }
-//        ServletContext context = getServletContext();
-//        context.getRequestDispatcher("/index.jsp").forward(request,response);
     }
 
     public boolean validate(String x, String y, String r) {

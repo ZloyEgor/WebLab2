@@ -56,9 +56,8 @@ public class AreaCheckServlet extends HttpServlet {
 
     public boolean checkX(String x) {
         try {
-            Double[] possibleValues = {-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-            double doubleX = Double.parseDouble(x);
-            return Arrays.asList(possibleValues).contains(doubleX);
+            double doubleY = Double.parseDouble(x);
+            return ((doubleY >= -5.) && (doubleY <= 3.));
         } catch (NumberFormatException e) {
             return false;
         }

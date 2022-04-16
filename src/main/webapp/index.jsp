@@ -75,7 +75,7 @@
                     <option value="3">3</option>
                 </select>
             </div>
-            <button type="submit">Check</button>
+            <button class="submit" type="submit">Check</button>
         </div>
         <div class="svg-container">
             <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg">

@@ -44,34 +44,18 @@ function checkY() {
     return true;
 }
 
+// Функция для кнопки Submit
+$('.submit').on("click", function (event) {
+    event.preventDefault();
+    if (!validate()) return;
+    const {x, y, r} = getData();
+    doRequest(x, y, r);
+});
 
 function getData() {
     let x = parseInt($("input[name='x_value']:checked:first").val());
     let y = parseFloat($('#y').val().replace(",", "."));
     let r = parseFloat($('#r').val());
 
-    return {
-        "x_value": x,
-        "y_value": y,
-        "r_value": r
-    };
+    return {x, y, r};
 }
-
-// $('.form').on("submit", function (event) {
-//     if (validate()) {
-//         event.preventDefault();
-//         let data = getData();
-//         $.ajax( {
-//             url: 'send',
-//             type: 'GET',
-//             data: data,
-//             success: function (data) {
-//
-//             },
-//             error: function (jqXhr, textStatus, errorMessage) { // error callback
-//                 console.log(errorMessage);
-//                 alert("There's an error on server");
-//             }
-//         });
-//     }
-// });

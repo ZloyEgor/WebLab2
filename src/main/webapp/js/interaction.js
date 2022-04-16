@@ -12,7 +12,7 @@ function doRequest(x, y, r) {
     let request = ("send?x_value=" + x + "&y_value=" + y + "&r_value=" + r);
     fetch(request)
         .then(response => response.text())
-        .then(console.log(response));
+        .then(response => addToTable(response));
 }
 
 $('svg').on("click", function (e) {
@@ -24,3 +24,31 @@ $('svg').on("click", function (e) {
     const y = (((r / 50) * (SVG_SIZE / 2 - rowY)) / 2).toFixed(2);
     doRequest(x, y, r);
 });
+
+function addToTable(response) {
+    console.log(response)
+    response = JSON.parse(response);
+    console.log(response);
+    response.forEach(element => {
+        $('tbody')
+            .append($('<tr>')
+                .append($('<td>')
+                    .text(element['x'])
+                )
+                .append($('<td>')
+                    .text(element['y'])
+                )
+                .append($('<td>')
+                    .text(element['r'])
+                )
+                .append($('<td style=\"background-color: ' +
+                    (element['result'] === "Попадание" ? "green;" : "red;") +
+                    "\">")
+                    .text(element['result'])
+                ).append($('<td>')
+                    .text(element['localTime'])
+                ).append($('<td>')
+                    .text(element['executionTime'])
+                ));
+    });
+}

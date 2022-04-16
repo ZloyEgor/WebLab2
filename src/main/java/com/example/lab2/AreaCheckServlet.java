@@ -1,5 +1,7 @@
 package com.example.lab2;
 
+import com.google.gson.Gson;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,12 +44,14 @@ public class AreaCheckServlet extends HttpServlet {
 
             dots.add(dot);
             session.setAttribute("dots", dots);
+
+            Gson gson = new Gson();
+            String JSONResponse = gson.toJson(dots);
+            response.getWriter().print(JSONResponse);
+            request.getSession().setAttribute("serverInfo", true);
         }
-
-
-        request.getSession().setAttribute("serverInfo", valid);
-        ServletContext context = getServletContext();
-        context.getRequestDispatcher("/index.jsp").forward(request,response);
+//        ServletContext context = getServletContext();
+//        context.getRequestDispatcher("/index.jsp").forward(request,response);
     }
 
     public boolean validate(String x, String y, String r) {

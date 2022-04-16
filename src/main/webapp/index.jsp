@@ -20,7 +20,7 @@
     </div>
 </header>
 <article>
-    <form class="form" name="form" method="get" onsubmit="return validate();" action="send">
+    <form>
         <div class="selectors">
             <div class="x-selector">
                 <label class="selector-description">Choose X value:</label>
@@ -75,7 +75,7 @@
                     <option value="3">3</option>
                 </select>
             </div>
-            <button class="submit-button" type="submit">Check</button>
+            <button type="submit">Check</button>
         </div>
         <div class="svg-container">
             <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg">
@@ -159,7 +159,6 @@
                 <td>${dot.executionTime}</td>
             </tr>
         </c:forEach>
-
         </tbody>
     </table>
 

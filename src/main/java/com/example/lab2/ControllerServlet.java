@@ -25,11 +25,10 @@ public class ControllerServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
             requestDispatcher.forward(request, response);
         } else {
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             ServletContext context = getServletContext();
             context.getRequestDispatcher("/index.jsp").forward(request, response);
         }
-
         writer.close();
-
     }
 }

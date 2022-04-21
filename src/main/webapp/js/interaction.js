@@ -24,8 +24,8 @@ $('svg').on("click", function (e) {
     const rowX = e.pageX - position.left;
     const rowY = e.pageY - position.top;
     const r = parseFloat($('#r').val());
-    const x = (((r / 50) * (rowX - SVG_SIZE / 2)) / 2).toFixed(2);
-    const y = (((r / 50) * (SVG_SIZE / 2 - rowY)) / 2).toFixed(2);
+    const x = (r / 100 * (rowX - SVG_SIZE / 2)).toFixed(2);
+    const y = (r / 100 * (SVG_SIZE / 2 - rowY)).toFixed(2);
     doRequest(x, y, r);
 });
 
